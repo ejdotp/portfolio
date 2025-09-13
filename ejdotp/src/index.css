@@ -1,12 +1,31 @@
-@tailwind base;
+ @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  background-color: #FDFDF5; 
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39sbGxvb29o RagehJTz4uLzMAIMggQPtxoDRvOwvAAAAFElEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAAJAAY2O2h0AAAAASUVORK5CYII=');
+  /* This is our light mode "paper" color. */
+  background-color: #FDFDF5;
+
+  /*
+    This is our new, slightly more visible noise texture.
+    It's still embedded as a Data URI for performance.
+  */
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAMFBMVEUEBAT+/v7///////////////////////////////////////////////////////////////9uc2EaAAAAD3RSTlMAEREiI3mZmZmbu7vM3d3d24662AAAAbNJREFUSMftlNuSlDAMg/5/BhaM4Na7M0225gQhjJ42SsU3z/doj23QAE523G9G2uzB5P13j23aAI52fO+L2+YfNAHc7bDdD7bIf2gA2Lb9sN0Ptsh/aADa5h+2w/bYF+0AbLM/2A7bY1+0A2zTX9gO22NftANs01/YDtti/aADbNN/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aACAZP9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aACANP9gO2yH7QDb9B+2w3bYh+0A2/QftkN22B/aADbYh+2wXbbFH2gA22G7bIdt8S/aADbYDtthO2z5f2gA2GAb7IdtseX/oAFhi+2wHbbl/6EBYYftkB225f+hAWE3bIdtufl/aEDYAdthO2z5f2hA2AHbYTtsz/9fBuAm3y3bYf/1AbjJd8t22B/aADbYh+2wXbbFH2gA22G7bIdt8S/aADbYDtthO2z5f2gA2GAb7IdtseX/oAFhi+2wHbbl/6EBYYftkB225f+hAWE3bIdtufl/aEDYAdthO2z5f2hA2AHbYTtsz/8PACMAAAAASUVORK5CYII=');
+
+  /*
+    This is a special CSS property that controls how the background-image
+    blends with the background-color. 'multiply' darkens the background
+    color where the texture is, creating a very natural, paper-like grain.
+  */
+  background-blend-mode: multiply;
 }
 
 .dark body {
-  background-color: #1A1A1A; 
+  /*
+    In dark mode, we simply change the underlying "paper" color.
+    The same texture and blend mode will automatically apply on top,
+    creating a subtle grain on the dark background.
+  */
+  background-color: #1A1A1A;
 }
+
