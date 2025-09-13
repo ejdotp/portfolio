@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage.jsx';
 import CareerPage from './pages/CareerPage.jsx';
 import GalleryPage from './pages/GalleryPage.jsx';
 
+// --- Data - You can easily update your info here ---
 const personalInfo = {
   name: "E. Jagadeeswar Patro",
   location: "Bhubaneswar, Odisha",
@@ -22,12 +23,12 @@ const pageConfig = {
     ]
   },
   career: {
-    title: 'Career', vol: '3', sections: [
+    title: 'Career', vol: '2', sections: [
       { id: 'careertimeline', title: 'Timeline' }
     ]
   },
-  gallery: { title: 'Gallery', vol: '4', sections: [] },
-  resume: { title: 'Resume', vol: '5', sections: [] },
+  gallery: { title: 'Gallery', vol: '3', sections: [] },
+  resume: { title: 'Resume', vol: '4', sections: [] },
 };
 
 export default function App() {
@@ -39,13 +40,13 @@ export default function App() {
   const renderPage = () => {
     switch (currentPage) {
       case 'home':
-        return <HomePage setCurrentPage={setCurrentPage} />;
+        return <HomePage setCurrentPage={setCurrentPage} pageConfig={pageConfig} />;
       case 'career':
         return <CareerPage />;
       case 'gallery':
         return <GalleryPage />;
       default:
-        return <HomePage setCurrentPage={setCurrentPage} />;
+        return <HomePage setCurrentPage={setCurrentPage} pageConfig={pageConfig} />;
     }
   };
 
@@ -68,11 +69,12 @@ export default function App() {
           <main className="w-full lg:w-4/5">
             <div className="max-w-6xl mx-auto p-4 sm:p-8 md:p-12">
               <Header
-                name={personalInfo.name}
-                location={personalInfo.location}
+                personalInfo={personalInfo}
                 isDarkMode={isDarkMode}
                 toggleDarkMode={toggleDarkMode}
                 currentVol={currentVol}
+                pageConfig={pageConfig}
+                setCurrentPage={setCurrentPage}
               />
               {renderPage()}
             </div>

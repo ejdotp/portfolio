@@ -1,5 +1,6 @@
 import React from 'react';
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon, Github, Linkedin } from 'lucide-react';
+import MobileNav from './MobileNav.jsx';
 
 const DarkModeToggle = ({ isDarkMode, toggleDarkMode }) => (
     <button
@@ -11,7 +12,14 @@ const DarkModeToggle = ({ isDarkMode, toggleDarkMode }) => (
     </button>
 );
 
-export default function Header({ name, location, isDarkMode, toggleDarkMode, currentVol }) {
+const SocialIcon = ({ href, children }) => (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="p-2 text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white">
+        {children}
+    </a>
+);
+
+
+export default function Header({ personalInfo, isDarkMode, toggleDarkMode, currentVol, pageConfig, setCurrentPage }) {
     const currentDate = new Date().toLocaleString('en-US', {
         year: 'numeric',
         month: 'long',
@@ -20,20 +28,29 @@ export default function Header({ name, location, isDarkMode, toggleDarkMode, cur
 
     return (
         <header className="mb-12">
-            {/* Main Header with Centered Name */}
             <div className="relative flex justify-center items-center border-y-2 border-black dark:border-gray-600 py-4">
-                <h1 className="text-4xl md:text-5xl font-bold tracking-wider text-center">{name}</h1>
-                <div className="absolute right-0">
+                <h1 className="text-4xl md:text-5xl font-bold tracking-wider text-center">{personalInfo.name}</h1>
+
+                <div className="lg:hidden absolute right-0 flex items-center">
+                    <SocialIcon href={personalInfo.github}><Github size={20} /></SocialIcon>
+                    <SocialIcon href={personalInfo.linkedin}><Linkedin size={20} /></SocialIcon>
+                    <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+                </div>
+
+                <div className="hidden lg:flex absolute right-0">
                     <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
                 </div>
             </div>
 
-            {/* Restored Newspaper-style Sub-header */}
             <div className="flex justify-between items-center font-sans text-xs sm:text-sm py-2 border-b-2 border-black dark:border-gray-600">
                 <span>Vol. {currentVol}</span>
                 <span className="hidden sm:inline">{currentDate}</span>
-                <span className="hidden sm:inline">{location}</span>
+                <span className="hidden sm:inline">{personalInfo.location}</span>
                 <span>Page 1</span>
+            </div>
+
+            <div className="lg:hidden">
+                <MobileNav pageConfig={pageConfig} setCurrentPage={setCurrentPage} />
             </div>
         </header>
     );
