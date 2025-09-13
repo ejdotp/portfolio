@@ -21,11 +21,11 @@ const hobbies = {
     title: "Creations & Captures",
     description: "A glimpse into my creative side. When I'm not coding, I enjoy exploring the world through my camera lens and creating handcrafted items.",
     images: [
-        { src: "/images/a.jpg", alt: "A beautiful landscape shot" },
-        { src: "/images/b.jpg", alt: "A handmade craft item" },
-        { src: "/images/c.jpg", alt: "A portrait photograph" },
-        { src: "/images/d.jpg", alt: "Another landscape" },
-        { src: "/images/e.jpg", alt: "Another craft item" },
+        { src: "/images/a.webp", alt: "Lonavla" },
+        { src: "/images/b.webp", alt: "Shaniwar Wada" },
+        { src: "/images/c.webp", alt: "Brick who?" },
+        { src: "/images/d.webp", alt: "Macro Lady" },
+        { src: "/images/e.webp", alt: "Soda Pop" },
     ],
 }
 
@@ -84,7 +84,7 @@ export default function HomePage({ setCurrentPage, pageConfig }) {
             <section id="aboutme" className="mb-16 scroll-mt-24">
                 <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
                     <img
-                        src="/images/1.jpg"
+                        src="/images/1.webp"
                         alt="E. Jagadeeswar Patro"
                         className="w-75 h-48 md:w-48 md:h-56 object-cover rounded-sm shadow-md flex-shrink-0"
                         onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/192x224/EFEFEF/333333?text=E.J.P' }}

@@ -3,11 +3,11 @@ import React from 'react';
 // Instructions: To add your images, place them in a `public/images` folder 
 // and change the src to "/images/your-image-name.jpg"
 const galleryImages = [
-    { src: "/images/a.jpg", alt: "A beautiful landscape shot" },
-    { src: "/images/b.jpg", alt: "A handmade craft item" },
-    { src: "/images/c.jpg", alt: "A portrait photograph" },
-    { src: "/images/d.jpg", alt: "Another craft item" },
-    { src: "/images/e.jpg", alt: "Cityscape photography" },
+    { src: "/images/a.webp", alt: "Lonavla" },
+    { src: "/images/b.webp", alt: "Shaniwar Wada" },
+    { src: "/images/c.webp", alt: "Brick who?" },
+    { src: "/images/d.webp", alt: "Macro Lady" },
+    { src: "/images/e.webp", alt: "Soda Pop" },
 ];
 
 
