@@ -47,8 +47,10 @@ export default function Header({ personalInfo, isDarkMode, toggleDarkMode, curre
                 </div>
 
                 <div className="lg:hidden flex items-center justify-center flex-1">
+                    <SocialIcon href="mailto:jagadeeswarpatro@gmail.com"><Mail size={24} /></SocialIcon>
                     <SocialIcon href={personalInfo.github}><Github size={20} /></SocialIcon>
                     <SocialIcon href={personalInfo.linkedin}><Linkedin size={20} /></SocialIcon>
+                    <SocialIcon href={personalInfo.instagram}><Instagram size={24} /></SocialIcon>
                     <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
                 </div>
 

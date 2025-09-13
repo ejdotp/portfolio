@@ -10,6 +10,7 @@ const personalInfo = {
   location: "Bhubaneswar, Odisha",
   linkedin: "https://linkedin.com/in/ejdotp",
   github: "https://github.com/ejdotp",
+  instagram: "https://instagram.com/ejdotp",
 };
 
 const pageConfig = {

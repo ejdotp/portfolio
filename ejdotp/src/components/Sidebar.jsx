@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin } from 'lucide-react';
+import { Mail, Github, Linkedin, Instagram } from 'lucide-react';
 
 const SocialIcon = ({ href, children }) => (
     <a href={href} target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-gray-300 hover:text-black dark:hover:text-white transition-transform transform hover:scale-110">
@@ -63,12 +63,20 @@ export default function Sidebar({ currentPage, setCurrentPage, personalInfo, pag
 
                 <div className="font-sans">
                     <div className="flex space-x-6 mb-4">
-                        <SocialIcon href={personalInfo.github}>
-                            <Github size={24} />
-                        </SocialIcon>
-                        <SocialIcon href={personalInfo.linkedin}>
-                            <Linkedin size={24} />
-                        </SocialIcon>
+                        <div className="flex space-x-6 mb-4">
+                            <SocialIcon href="mailto:jagadeeswarpatro@gmail.com">
+                                <Mail size={24} />
+                            </SocialIcon>
+                            <SocialIcon href={personalInfo.github}>
+                                <Github size={24} />
+                            </SocialIcon>
+                            <SocialIcon href={personalInfo.linkedin}>
+                                <Linkedin size={24} />
+                            </SocialIcon>
+                            <SocialIcon href={personalInfo.instagram}>
+                                <Instagram size={24} />
+                            </SocialIcon>
+                        </div>
                     </div>
                 </div>
             </div>
