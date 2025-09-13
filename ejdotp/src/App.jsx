@@ -5,7 +5,6 @@ import HomePage from './pages/HomePage.jsx';
 import CareerPage from './pages/CareerPage.jsx';
 import GalleryPage from './pages/GalleryPage.jsx';
 
-// --- Data - You can easily update your info here ---
 const personalInfo = {
   name: "E. Jagadeeswar Patro",
   location: "Bhubaneswar, Odisha",
@@ -15,7 +14,7 @@ const personalInfo = {
 
 const pageConfig = {
   home: {
-    title: 'Home', vol: '1', sections: [
+    title: 'Home', sections: [
       { id: 'aboutme', title: 'About Me' },
       { id: 'projects', title: 'Projects' },
       { id: 'cocurricular', title: 'Co-curricular' },
@@ -23,12 +22,12 @@ const pageConfig = {
     ]
   },
   career: {
-    title: 'Career', vol: '2', sections: [
+    title: 'Career', sections: [
       { id: 'careertimeline', title: 'Timeline' }
     ]
   },
-  gallery: { title: 'Gallery', vol: '3', sections: [] },
-  resume: { title: 'Resume', vol: '4', sections: [] },
+  gallery: { title: 'Gallery', sections: [] },
+  resume: { title: 'Resume', sections: [] },
 };
 
 export default function App() {
@@ -50,7 +49,9 @@ export default function App() {
     }
   };
 
-  const currentVol = pageConfig[currentPage]?.vol || '1';
+  const currentVol = 3; /
+  const pageKeys = Object.keys(pageConfig);
+  const currentPageNumber = pageKeys.indexOf(currentPage) + 1;
 
   useEffect(() => {
     document.body.classList.toggle('dark', isDarkMode);
@@ -73,6 +74,7 @@ export default function App() {
                 isDarkMode={isDarkMode}
                 toggleDarkMode={toggleDarkMode}
                 currentVol={currentVol}
+                currentPageNumber={currentPageNumber}
                 pageConfig={pageConfig}
                 setCurrentPage={setCurrentPage}
               />

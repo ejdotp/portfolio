@@ -19,7 +19,7 @@ const SocialIcon = ({ href, children }) => (
 );
 
 
-export default function Header({ personalInfo, isDarkMode, toggleDarkMode, currentVol, pageConfig, setCurrentPage }) {
+export default function Header({ personalInfo, isDarkMode, toggleDarkMode, currentVol, currentPageNumber, pageConfig, setCurrentPage }) {
     const currentDate = new Date().toLocaleString('en-US', {
         year: 'numeric',
         month: 'long',
@@ -31,22 +31,28 @@ export default function Header({ personalInfo, isDarkMode, toggleDarkMode, curre
             <div className="relative flex justify-center items-center border-y-2 border-black dark:border-gray-600 py-4">
                 <h1 className="text-4xl md:text-5xl font-bold tracking-wider text-center">{personalInfo.name}</h1>
 
-                <div className="lg:hidden absolute right-0 flex items-center">
-                    <SocialIcon href={personalInfo.github}><Github size={20} /></SocialIcon>
-                    <SocialIcon href={personalInfo.linkedin}><Linkedin size={20} /></SocialIcon>
-                    <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-                </div>
-
                 <div className="hidden lg:flex absolute right-0">
                     <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
                 </div>
             </div>
 
             <div className="flex justify-between items-center font-sans text-xs sm:text-sm py-2 border-b-2 border-black dark:border-gray-600">
-                <span>Vol. {currentVol}</span>
-                <span className="hidden sm:inline">{currentDate}</span>
-                <span className="hidden sm:inline">{personalInfo.location}</span>
-                <span>Page 1</span>
+
+                <span className="flex-1 text-left">Vol. {currentVol}</span>
+
+                <div className="hidden lg:flex items-center gap-4 text-center">
+                    <span>{currentDate}</span>
+                    <span className="font-bold">&bull;</span>
+                    <span>{personalInfo.location}</span>
+                </div>
+
+                <div className="lg:hidden flex items-center justify-center flex-1">
+                    <SocialIcon href={personalInfo.github}><Github size={20} /></SocialIcon>
+                    <SocialIcon href={personalInfo.linkedin}><Linkedin size={20} /></SocialIcon>
+                    <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+                </div>
+
+                <span className="flex-1 text-right">Page {currentPageNumber}</span>
             </div>
 
             <div className="lg:hidden">
