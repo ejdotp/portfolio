@@ -1,4 +1,4 @@
-import React, 'react';
+import React from 'react';
 import Sidebar from './components/Sidebar.jsx';
 import Header from './components/Header.jsx';
 import HomePage from './pages/HomePage.jsx';
