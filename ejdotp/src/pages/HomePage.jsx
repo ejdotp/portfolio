@@ -117,7 +117,7 @@ export default function HomePage({ setCurrentPage, pageConfig }) {
                     <div className="flex-1">
                         <h3 className="text-xl font-bold">Volunteer at Youth for Sustainability (YFS)</h3>
                         <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">August 2020 - August 2021</p>
-                        <ul className="list-disc list-inside space-y-2">
+                        <ul className="list-disc list-outside space-y-2 ml-5">
                             <li>Designed and donated an eco-friendly board game to educate children on sustainability.</li>
                             <li>Conducted awareness sessions on sustainable habits in remote villages, promoting environmental consciousness.</li>
                             <li>Researched and curated articles for a climate news bulletin, helping to disseminate important information.</li>
@@ -138,7 +138,7 @@ export default function HomePage({ setCurrentPage, pageConfig }) {
                 <div className="flex flex-col md:flex-row gap-8 items-start">
                     <div className="flex-1 md:order-1">
                         <p className="mb-4">{hobbies.description}</p>
-                        <p>See more in the <button onClick={() => setCurrentPage('gallery')} className="text-blue-500 hover:underline font-semibold">Gallery</button>.</p>
+                        <p>See more in the <button onClick={() => setCurrentPage('gallery')} className="hover:underline font-semibold">Gallery</button>.</p>
                     </div>
                     <div className="w-full md:w-96 flex-shrink-0 md:order-2">
                         <Carousel images={hobbies.images} />
