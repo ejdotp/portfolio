@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sun, Moon, Github, Linkedin } from 'lucide-react';
+import { Sun, Moon, Mail, Github, Linkedin, Instagram } from 'lucide-react';
 import MobileNav from './MobileNav.jsx';
 
 const DarkModeToggle = ({ isDarkMode, toggleDarkMode }) => (
