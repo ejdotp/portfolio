@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar.jsx';
 import Header from './components/Header.jsx';
 import HomePage from './pages/HomePage.jsx';
 import CareerPage from './pages/CareerPage.jsx';
 import GalleryPage from './pages/GalleryPage.jsx';
 
-
+// --- Data - You can easily update your info here ---
 const personalInfo = {
     name: "E. Jagadeeswar Patro",
     location: "Bhubaneswar, Odisha",
     linkedin: "https://linkedin.com/in/ejdotp",
     github: "https://github.com/ejdotp",
-    instagram: "https://instagram.com/ejdotp",
 };
 
 const pageConfig = {
@@ -33,6 +32,7 @@ const pageConfig = {
 };
 
 export default function App() {
+    // --- State Initialization with localStorage ---
     const [isDarkMode, setIsDarkMode] = useState(() => {
         const savedTheme = localStorage.getItem('theme');
         return savedTheme === 'dark';
@@ -42,14 +42,15 @@ export default function App() {
         const savedPage = localStorage.getItem('currentPage');
         return savedPage && Object.keys(pageConfig).includes(savedPage) ? savedPage : 'home';
     });
-
-    React.useEffect(() => {
+    
+    // --- useEffect hooks to save state to localStorage ---
+    useEffect(() => {
         const theme = isDarkMode ? 'dark' : 'light';
         localStorage.setItem('theme', theme);
         document.documentElement.classList.toggle('dark', isDarkMode);
     }, [isDarkMode]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         localStorage.setItem('currentPage', currentPage);
     }, [currentPage]);
 
