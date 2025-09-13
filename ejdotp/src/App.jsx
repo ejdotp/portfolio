@@ -49,7 +49,7 @@ export default function App() {
     }
   };
 
-  const currentVol = 3; /
+  const currentVol = 3;
   const pageKeys = Object.keys(pageConfig);
   const currentPageNumber = pageKeys.indexOf(currentPage) + 1;
 
