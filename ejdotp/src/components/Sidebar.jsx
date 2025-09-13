@@ -21,8 +21,12 @@ export default function Sidebar({ currentPage, setCurrentPage, personalInfo, pag
     };
 
     const handlePageClick = (page) => {
-        setCurrentPage(page);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (page === 'resume') {
+            window.open('https://drive.google.com/file/d/1ec5mPw-2mhzKP6qThaqQc8RbntkDlq-X/view?usp=sharing', '_blank');
+        } else {
+            setCurrentPage(page);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     };
 
     return (
@@ -35,22 +39,12 @@ export default function Sidebar({ currentPage, setCurrentPage, personalInfo, pag
                     <ul>
                         {Object.entries(pageConfig).map(([pageKey, pageValue]) => (
                             <li key={pageKey} className="mb-3">
-                                {pageKey === 'resume' ? (
-                                    <a
-                                        href="/resume.pdf"
-                                        download="E_Jagadeeswar_Patro_Resume.pdf"
-                                        className="font-bold text-lg w-full text-left text-gray-700 dark:text-gray-400 hover:text-black dark:hover:text-white"
-                                    >
-                                        {pageValue.title}
-                                    </a>
-                                ) : (
-                                    <button
-                                        onClick={() => handlePageClick(pageKey)}
-                                        className={`font-bold text-lg w-full text-left ${currentPage === pageKey ? 'text-black dark:text-white' : 'text-gray-700 dark:text-gray-400'} hover:text-black dark:hover:text-white`}
-                                    >
-                                        {pageValue.title}
-                                    </button>
-                                )}
+                                <button
+                                    onClick={() => handlePageClick(pageKey)}
+                                    className={`font-bold text-lg w-full text-left ${currentPage === pageKey ? 'text-black dark:text-white' : 'text-gray-700 dark:text-gray-400'} hover:text-black dark:hover:text-white`}
+                                >
+                                    {pageValue.title}
+                                </button>
                                 {currentPage === pageKey && pageValue.sections.length > 0 && (
                                     <ul className="mt-2">
                                         {pageValue.sections.map(section => (

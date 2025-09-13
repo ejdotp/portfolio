@@ -5,7 +5,6 @@ import HomePage from './pages/HomePage.jsx';
 import CareerPage from './pages/CareerPage.jsx';
 import GalleryPage from './pages/GalleryPage.jsx';
 
-// --- Data - You can easily update your info here ---
 const personalInfo = {
   name: "E. Jagadeeswar Patro",
   location: "Bhubaneswar, Odisha",
@@ -23,12 +22,12 @@ const pageConfig = {
     ]
   },
   career: {
-    title: 'Career', vol: '2', sections: [
+    title: 'Career', vol: '3', sections: [
       { id: 'careertimeline', title: 'Timeline' }
     ]
   },
-  gallery: { title: 'Gallery', vol: '3', sections: [] },
-  resume: { title: 'Resume', vol: '4', sections: [] },
+  gallery: { title: 'Gallery', vol: '4', sections: [] },
+  resume: { title: 'Resume', vol: '5', sections: [] },
 };
 
 export default function App() {
@@ -66,8 +65,8 @@ export default function App() {
             personalInfo={personalInfo}
             pageConfig={pageConfig}
           />
-          <main className="w-full">
-            <div className="max-w-6xl mx-auto sm:p-8 md:p-12">
+          <main className="w-full lg:w-4/5">
+            <div className="max-w-6xl mx-auto p-4 sm:p-8 md:p-12">
               <Header
                 name={personalInfo.name}
                 location={personalInfo.location}

@@ -18,7 +18,7 @@ export default function CareerPage() {
     const timelineEvents = [
         {
             date: "Jan 2026 - Present",
-            title: "Graduate Engineer Trainee",
+            title: "Software Engineer Trainee",
             company: "GyanSys Inc.",
             description: "Upcoming role focusing on enterprise solutions and technology consulting.",
             buttons: [
