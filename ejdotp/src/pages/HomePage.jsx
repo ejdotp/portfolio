@@ -86,7 +86,7 @@ export default function HomePage({ setCurrentPage, pageConfig }) {
                     <img
                         src="/images/1.webp"
                         alt="E. Jagadeeswar Patro"
-                        className="w-75 h-48 md:w-48 md:h-56 object-cover rounded-sm shadow-md flex-shrink-0"
+                        className="w-75 h-48 md:w-52 md:h-60 object-cover rounded-sm shadow-md flex-shrink-0"
                         onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/192x224/EFEFEF/333333?text=E.J.P' }}
                     />
                     <div className="font-sans text-base leading-relaxed space-y-4 text-center md:text-left">

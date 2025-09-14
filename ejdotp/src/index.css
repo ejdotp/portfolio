@@ -1,31 +1,91 @@
- @tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --paper-base: #FDFDF5;
+  --paper-ink-tint: rgba(0, 0, 0, 0.035);
+  --crease-color: rgba(255, 255, 255, 0.55);
+}
+
+:root {
+  --paper-base: #FDFDF5;
+  --paper-ink-tint: rgba(0, 0, 0, 0.03);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  min-height: 100%;
+}
+
 body {
-  /* This is our light mode "paper" color. */
-  background-color: #FDFDF5;
+  background-color: var(--paper-base);
 
-  /*
-    This is our new, slightly more visible noise texture.
-    It's still embedded as a Data URI for performance.
+  /* Layer order (top -> bottom):
+     1) vignette
+     2) faint crease highlight
+     3) horizontal "laid" micro-lines (tooth)
+     4) subtle SVG turbulence noise (fibers)
+     5) base color
   */
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAMFBMVEUEBAT+/v7///////////////////////////////////////////////////////////////9uc2EaAAAAD3RSTlMAEREiI3mZmZmbu7vM3d3d24662AAAAbNJREFUSMftlNuSlDAMg/5/BhaM4Na7M0225gQhjJ42SsU3z/doj23QAE523G9G2uzB5P13j23aAI52fO+L2+YfNAHc7bDdD7bIf2gA2Lb9sN0Ptsh/aADa5h+2w/bYF+0AbLM/2A7bY1+0A2zTX9gO22NftANs01/YDtti/aADbNN/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aACAZP9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aADbNP/2A7bYh+0A2zT/9gO22IftANs0//YDtti/aACANP9gO2yH7QDb9B+2w3bYh+0A2/QftkN22B/aADbYh+2wXbbFH2gA22G7bIdt8S/aADbYDtthO2z5f2gA2GAb7IdtseX/oAFhi+2wHbbl/6EBYYftkB225f+hAWE3bIdtufl/aEDYAdthO2z5f2hA2AHbYTtsz/9fBuAm3y3bYf/1AbjJd8t22B/aADbYh+2wXbbFH2gA22G7bIdt8S/aADbYDtthO2z5f2gA2GAb7IdtseX/oAFhi+2wHbbl/6EBYYftkB225f+hAWE3bIdtufl/aEDYAdthO2z5f2hA2AHbYTtsz/8PACMAAAAASUVORK5CYII=');
+  background-image:
+    radial-gradient(1200px 600px at 50% 8%, rgba(0, 0, 0, 0.06), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.45) 2%, transparent 3%),
+    repeating-linear-gradient(180deg, rgba(0, 0, 0, 0.015) 0 1px, transparent 1px 6px),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='360' height='360' viewBox='0 0 360 360'><filter id='noise'><feTurbulence baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' fill='white' filter='url(%23noise)' opacity='0.06'/></svg>");
 
-  /*
-    This is a special CSS property that controls how the background-image
-    blends with the background-color. 'multiply' darkens the background
-    color where the texture is, creating a very natural, paper-like grain.
-  */
-  background-blend-mode: multiply;
+  background-size: cover, 100% 6rem, 100% 6px, 360px 360px;
+  background-repeat: no-repeat, no-repeat, repeat, repeat;
+  background-attachment: fixed, scroll, scroll, scroll;
+  background-blend-mode: multiply, normal, multiply, normal;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  mix-blend-mode: multiply;
+  background-image:
+    linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.02) 48%, rgba(255, 255, 255, 0.045) 50%, rgba(0, 0, 0, 0.02) 52%, transparent 100%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.55) 0%, transparent 2%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><circle cx='3' cy='3' r='0.7' fill='%23000000' opacity='0.06'/><circle cx='12' cy='11' r='0.6' fill='%23000000' opacity='0.04'/></svg>");
+  background-repeat: repeat, no-repeat, repeat;
+  background-size: 100% 100%, 120% 6rem, 16px 16px;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  left: 22%;
+  top: 0;
+  width: 0.6px;
+  height: 100%;
+  transform: skewY(-2deg);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0.02));
+  opacity: 0.05;
+  pointer-events: none;
 }
 
 .dark body {
-  /*
-    In dark mode, we simply change the underlying "paper" color.
-    The same texture and blend mode will automatically apply on top,
-    creating a subtle grain on the dark background.
-  */
-  background-color: #1A1A1A;
+  --paper-base: #111214;
+  background-color: var(--paper-base);
+
+  background-image:
+    radial-gradient(1200px 600px at 50% 8%, rgba(0, 0, 0, 0.25), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.02) 2%, transparent 3%),
+    repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.01) 0 1px, transparent 1px 6px),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='360' height='360' viewBox='0 0 360 360'><filter id='noise'><feTurbulence baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' fill='black' filter='url(%23noise)' opacity='0.04'/></svg>");
+  background-size: cover, 100% 6rem, 100% 6px, 360px 360px;
+  background-repeat: no-repeat, no-repeat, repeat, repeat;
+  background-blend-mode: overlay, normal, overlay, normal;
 }
 
+img {
+  image-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
